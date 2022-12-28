@@ -32,9 +32,13 @@ https://medium.com/zabbix-brasil/integrando-zabbix-e-grafana-d46de4d1526d
 Requirements for template operation:
 
 * Create MySQL user for monitoring. For example:
+
 CREATE USER 'zbx_monitor'@'%' IDENTIFIED BY '<password>';
 	
-GRANT USAGE,REPLICATION CLIENT,PROCESS,SHOW DATABASES,SHOW VIEW ON *.* TO 'zbx_monitor'@'%';
+GRANT USAGE,REPLICATION CLIENT,PROCESS,SHOW DATABASES,SHOW VIEW ON *.* TO
+'zbx_monitor'@'%';
+
+flush privileges;
 	
 For more information read the MYSQL documentation https://dev.mysql.com/doc/refman/8.0/en/grant.html , please. 
 	
