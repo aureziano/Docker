@@ -30,6 +30,7 @@ https://medium.com/zabbix-brasil/integrando-zabbix-e-grafana-d46de4d1526d
 
 # Configuração Zabbix Agent 2 para Mysql
 Requirements for template operation:
+
 1.Create MySQL user for monitoring. For example:
 CREATE USER 'zbx_monitor'@'%' IDENTIFIED BY '<password>';
 	
