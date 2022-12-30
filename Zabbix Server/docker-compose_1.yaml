@@ -1,6 +1,7 @@
 version: '3.5'
 services:
- mysql-server:
+ mysql:
+  container_name: mysql
   image: mysql:8.0
   networks:
    - zbx_net
@@ -17,7 +18,8 @@ services:
    - ZBX_JAVAGATEWAY=zabbix-java-gateway
   volumes:
    - /zabbix-mysql:/var/lib/mysql:rw
- zabbix-server-mysql:
+ zabbix-server:
+  container_name: zabbix-server
   image: zabbix/zabbix-server-mysql:alpine-latest
   networks:
    - zbx_net
@@ -35,7 +37,7 @@ services:
    - /zabbix-data/mibs:/var/lib/zabbix/mibs:ro
    - /zabbix-data/snmptraps:/var/lib/zabbix/snmptraps:rw
   environment:
-   - DB_SERVER_HOST=mysql-server
+   - DB_SERVER_HOST=mysql
    - MYSQL_DATABASE=zabbixdb
    - MYSQL_USER=zabbix
    - MYSQL_PASSWORD=Passw0rd
@@ -43,9 +45,10 @@ services:
    - ZBX_JAVAGATEWAY=zabbix-java-gateway
 
   depends_on:
-   - mysql-server
+   - mysql
 
- zabbix-web-nginx-mysql:
+ zabbix-frontend:
+  container_name: zabbix-frontend
   image: zabbix/zabbix-web-nginx-mysql:alpine-6.0-latest
   networks:
    - zbx_net
@@ -58,21 +61,55 @@ services:
    - /zabbix-nginx/nginx:/etc/ssl/nginx:ro
    - /zabbix-nginx/modules/:/usr/share/zabbix/modules/:ro
   environment:
-   - ZBX_SERVER_HOST=zabbix-server-mysql
-   - DB_SERVER_HOST=mysql-server
+   - ZBX_SERVER_HOST=zabbix-server
+   - DB_SERVER_HOST=mysql
    - MYSQL_DATABASE=zabbixdb
    - MYSQL_USER=zabbix
    - MYSQL_PASSWORD=Passw0rd
    - MYSQL_ROOT_PASSWORD=StrongPassword
   depends_on:
-   - mysql-server
-   - zabbix-server-mysql
+   - mysql
+   - zabbix-server
  zabbix-java-gateway:
   image: zabbix/zabbix-java-gateway:alpine-6.0-latest
   networks:
    - zbx_net
   ports:
    - 10052:10052
+   
+ grafana:
+  container_name: grafana
+  image: grafana/grafana
+  networks:
+   - zbx_net
+  links:
+   - mysql
+   - zabbix-server
+  restart: always
+  ports:
+   - '3000:3000'
+  environment: 
+   - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app
+  depends_on:
+   - mysql
+   - zabbix-server
+ zabbix-agent:
+  container_name: zabbix-agent
+  image: zabbix/zabbix-agent2:alpine-5.0.1
+  user: root
+  networks:
+   - zbx_net
+  links:
+   - zabbix-server
+  restart: always
+  privileged: true
+  volumes:
+   - /var/run:/var/run
+  ports:
+    - '10050:10050'
+  environment:
+    - ZBX_HOSTNAME=Servidor Zabbix
+    - ZBX_SERVER_HOST=zabbix-server  
 networks:
  zbx_net:
    driver: bridge
