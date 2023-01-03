@@ -109,7 +109,7 @@ exports.createverifica = (req, res) => {
             res.send(data);
             console.log("Usuario adicionado com email " + usuario.email);
             var message = "ok";
-            res.render('views/registro', { message: message });
+            res.render('views/login_sucess', { message: message });
           })
           .catch(err => {
             res.status(500).send({
