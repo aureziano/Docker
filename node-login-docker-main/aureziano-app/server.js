@@ -16,7 +16,7 @@ const path = require('path');
 //console.log(process.env.NODE_ENV === 'dev') // false
 //console.log(process.env.NODE_ENV.length) // 4 (including a space at the end) 
 const app = express();
-// app.use(express.favicon(path.join(__dirname, 'public','images','favicon.ico'))); 
+app.use(express.favicon(path.join(__dirname, 'public','images','favicon.ico'))); 
 var corsOptions = {
   origin: "http://localhost:8081"
 };
