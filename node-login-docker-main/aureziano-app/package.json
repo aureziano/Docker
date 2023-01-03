@@ -1,0 +1,37 @@
+{
+  "name": "nodejs-express-sequelize-mysql",
+  "version": "1.0.0",
+  "description": "Node.js Rest Apis with Express, Sequelize & MySQL",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=dev && node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "rest",
+    "api",
+    "sequelize",
+    "mysql"
+  ],
+  "author": "aureziano",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.8",
+    "express": "^4.17.1",
+    "express-session": "^1.17.3",
+    "mysql2": "^2.0.2",
+    "sequelize": "^5.21.2"
+  },
+  "devDependencies": {
+    "node-env-run": "^4.0.2",
+    "react-error-overlay": "^6.0.9"
+  },
+  "overrides": {
+    "react-error-overlay": "6.0.9"
+  }
+}
