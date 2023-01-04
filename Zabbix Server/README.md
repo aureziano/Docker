@@ -1,3 +1,5 @@
+![Badge Zabbix](http://img.shields.io/static/v1?label=STATUS&message=EM%20Zabbix&color=RED&style=for-the-badge)
+
 ## Instruções para configuração do Zabbix Server - Grafana
 
 # Ambiente de treinamento docker
