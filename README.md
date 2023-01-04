@@ -17,8 +17,7 @@
 * Ver os ips de todos os containers:
 
 ```
-docker inspect $(docker ps -q ) \
---format='{{ printf "%-50s" .Name}} {{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}'
+docker inspect $(docker ps -q ) --format='{{ printf "%-50s" .Name}} {{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}'
 ```
 
 * Ver as portas usadas:
