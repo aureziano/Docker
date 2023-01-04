@@ -1,5 +1,6 @@
-![Badge Zabbix](http://img.shields.io/static/v1?label=STATUS&message=Zabbix&color=RED&style=for-the-badge)
+![Badge Zabbix](http://img.shields.io/static/v1?label=&message=Zabbix&color=RED&style=for-the-badge)
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
 
 ## Instruções para configuração do Zabbix Server - Grafana
 
