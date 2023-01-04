@@ -1,5 +1,7 @@
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=plastic)
 ![Badge Zabbix](https://img.shields.io/static/v1?label=Zabbix&message=5.0&color=blue&style=plastic)
+![Badge Mysql](https://img.shields.io/static/v1?label=MySql&message=5.7&color=blue&style=plastic)
+![Badge Grafana](https://img.shields.io/static/v1?label=Grafana&message=9.3&color=blue&style=plastic)
 # Repositorio com Docker compose das seguintes aplicações
 
 * Airflow
