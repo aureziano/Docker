@@ -16,7 +16,27 @@ vi /etc/zabbix/zabbix_agent2.conf
 * Encontrar as seguintes linhas e editar
 
 ```
-Server = <>
-ServerActive= <>
-Hostname = <>
+Server = <IP do Zabbix Server>
+ServerActive= <IP do Zabbix Server>
+Hostname = <IP do Zabbix Agent>
 ```
+
+
+# Procedimento de instalação em servidor Linux
+
+* Descobrir a versão e Kernel da versão do Linux
+
+```
+cat /etc/os-release
+```
+
+
+
+```
+uname -a 
+
+ou 
+
+cat /proc/version
+```
+
