@@ -8,23 +8,21 @@ services:
   mysql:
     container_name: mysql
     image: mysql:5.7
-    env_file: ./.env
     networks:
       - network-zabbix
     ports:
-      - '3308:3308'
+      - '3306:3306'
     volumes:
       - './zabbix/mysql:/var/lib/data'
     environment:
-      - MYSQL_ROOT_PASSWORD=$DB_ROOT_PASSWORD
-      - MYSQL_DATABASE=$DB_DATABASE
-      - MYSQL_USER=$DB_USER
-      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=123456
 
   zabbix-server:
     container_name: zabbix-server
     image: zabbix/zabbix-server-mysql:ubuntu-5.0.1
-    env_file: ./.env
     networks:
       - network-zabbix
     links:
@@ -36,17 +34,15 @@ services:
       - './zabbix/alertscripts:/usr/lib/zabbix/alertscripts'
     environment:
       - DB_SERVER_HOST=mysql
-      - DB_SERVER_PORT=3308
-      - MYSQL_DATABASE=$DB_DATABASE
-      - MYSQL_USER=$DB_USER
-      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=123456
     depends_on:
       - mysql
 
   zabbix-frontend:
     container_name: zabbix-frontend
     image: zabbix/zabbix-web-apache-mysql:ubuntu-5.0.1
-    env_file: ./.env
     networks:
       - network-zabbix
     links:
@@ -57,11 +53,9 @@ services:
       - '443:8443'
     environment:
       - DB_SERVER_HOST=mysql
-      - DB_SERVER_PORT=3308
-      - MYSQL_ROOT_PASSWORD=$DB_ROOT_PASSWORD
-      - MYSQL_DATABASE=$DB_DATABASE
-      - MYSQL_USER=$DB_USER
-      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=123456
       - PHP_TZ=America/Sao_Paulo
     depends_on:
       - mysql
@@ -69,7 +63,6 @@ services:
   grafana:
     container_name: grafana
     image: grafana/grafana
-    env_file: ./.env
     networks:
       - network-zabbix
     links:
@@ -87,7 +80,6 @@ services:
     container_name: zabbix-agent
     image: zabbix/zabbix-agent2:alpine-5.0.1
     user: root
-    env_file: ./.env
     networks:
       - network-zabbix
     links:
@@ -99,9 +91,8 @@ services:
     ports:
       - '10050:10050'
     environment:
-      - ZBX_HOSTNAME=$ZBX_HOSTNAME
-      - ZBX_SERVER_HOST=$ZBX_SERVER_HOST
-      #- ZBX_ACTIVESERVERS=$ZBX_ACTIVESERVERS
+      - ZBX_HOSTNAME=Zabbix server
+      - ZBX_SERVER_HOST=172.18.0.1
 
 
     

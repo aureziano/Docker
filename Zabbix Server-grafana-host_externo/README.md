@@ -1,7 +1,3 @@
-![Badge Zabbix](http://img.shields.io/static/v1?label=&message=Zabbix&color=RED&style=for-the-badge)
-![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
-![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
-
 ## Instruções para configuração do Zabbix Server - Grafana
 
 # Ambiente de treinamento docker
@@ -12,22 +8,19 @@ https://labs.play-with-docker.com/
 https://github.com/carryontech/zabbix-docker-compose/blob/master/docker-compose.yml
 
 # Criar pasta e aplicar o comando para execução do docker compose
-```
 docker-compose up -d
-```
+
 
 # Zabbix inicia na porta 80 e o Grafana na porta 3000
-```
+
 Zabbix:
 	- Username: Admin
 	- Password: zabbix
-```	
 
-```
 Grafana:
 	- Username: admin
 	- Senha: admin
-```
+
 
 
 
@@ -39,16 +32,14 @@ https://medium.com/zabbix-brasil/integrando-zabbix-e-grafana-d46de4d1526d
 Requirements for template operation:
 
 * Create MySQL user for monitoring. For example:
-```
+
 CREATE USER 'zbx_monitor'@'%' IDENTIFIED BY '<password>';
-```
-```
+	
 GRANT USAGE,REPLICATION CLIENT,PROCESS,SHOW DATABASES,SHOW VIEW ON *.* TO
 'zbx_monitor'@'%';
-```
-```
+
 flush privileges;
-```	
+	
 For more information read the MYSQL documentation https://dev.mysql.com/doc/refman/8.0/en/grant.html , please. 
 	
 * Set in the {$MYSQL.DSN} macro the system data source name of the MySQL instance such as <protocol(host:port or /path/to/socket)/>.
