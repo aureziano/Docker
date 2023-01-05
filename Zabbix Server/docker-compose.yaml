@@ -12,7 +12,7 @@ services:
     networks:
       - network-zabbix
     ports:
-      - '3308:3308'
+      - '3306:3306'
     volumes:
       - './zabbix/mysql:/var/lib/data'
     environment:
@@ -36,7 +36,6 @@ services:
       - './zabbix/alertscripts:/usr/lib/zabbix/alertscripts'
     environment:
       - DB_SERVER_HOST=mysql
-      - DB_SERVER_PORT=3308
       - MYSQL_DATABASE=$DB_DATABASE
       - MYSQL_USER=$DB_USER
       - MYSQL_PASSWORD=$DB_PASSWORD
@@ -57,7 +56,6 @@ services:
       - '443:8443'
     environment:
       - DB_SERVER_HOST=mysql
-      - DB_SERVER_PORT=3308
       - MYSQL_ROOT_PASSWORD=$DB_ROOT_PASSWORD
       - MYSQL_DATABASE=$DB_DATABASE
       - MYSQL_USER=$DB_USER
@@ -99,9 +97,6 @@ services:
     ports:
       - '10050:10050'
     environment:
-      - ZBX_HOSTNAME=$ZBX_HOSTNAME
-      - ZBX_SERVER_HOST=$ZBX_SERVER_HOST
-      #- ZBX_ACTIVESERVERS=$ZBX_ACTIVESERVERS
+      - ZBX_HOSTNAME=Zabbix Server
+      - ZBX_SERVER_HOST=172.22.0.1
 
-
-    
