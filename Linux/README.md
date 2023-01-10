@@ -1,4 +1,4 @@
-# Repositorio com Docker compose das seguintes aplicações
+# Comandos Linux úteis
 
 ## Versão do Linux e Kernel
 
@@ -33,7 +33,7 @@ df -h
 ```
 
 ## Portas 
-** Lista as portas abertas TCP/UDP
+### Lista as portas abertas TCP/UDP
 * -t para TCP
 * -u para UDP
 * -n para não resolver nomes
