@@ -1,0 +1,41 @@
+version: '2'
+networks:
+  network-zoneminder:
+    driver: bridge
+
+services:
+    mysql:
+        container_name: mysql
+        image: mysql:5.7
+        env_file: ./.env
+        networks:
+            - network-zoneminder
+        ports:
+            - '3306:3306'
+        volumes:
+            - './zoneminder/mysql:/var/lib/data'
+        environment:
+            - MYSQL_ROOT_PASSWORD=$DB_ROOT_PASSWORD
+            - MYSQL_DATABASE=$DB_DATABASE
+            - MYSQL_USER=$DB_USER
+            - MYSQL_PASSWORD=$DB_PASSWORD
+
+
+    zoneminder:
+        container_name: zoneminder
+        image: dlandon/zoneminder.machine.learning:latest 
+        restart: always
+        shm_size: 4096m
+        depends_on:
+            - mysql
+        volumes:
+            - ./config/zoneminder:/config
+        environment:
+            - TZ=America/Sao_Paulo 
+            - ZM_DB_HOST=$DB_DATABASE
+        networks:
+            - network-zoneminder
+        ports:
+            - 9080:80
+              
+
