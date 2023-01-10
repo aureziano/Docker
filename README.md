@@ -42,3 +42,8 @@ docker rm $(docker ps -a -q)
 ```
 docker rm <id ou nome do container>
 ```
+
+* Remover todos os volumes
+```
+docker volume rm $(docker volume ls -q)
+```
