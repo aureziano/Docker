@@ -18,4 +18,17 @@ cat /proc/version
 dmesg | grep Linux
 ```
 
+## Informações do sistema
+* Nº de Processadores
+```
+grep -c processor /proc/cpuinfo
+```
+* Memória
+```
+free -h
+```
+* Espaço em disco
+```
+df -h
+```
 
