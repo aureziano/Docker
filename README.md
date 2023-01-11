@@ -47,3 +47,7 @@ docker rm <id ou nome do container>
 ```
 docker volume rm $(docker volume ls -q)
 ```
+* Acompanhar logs
+```
+docker-compose logs --follow <container ID>
+```
