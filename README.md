@@ -51,3 +51,15 @@ docker volume rm $(docker volume ls -q)
 ```
 docker-compose logs --follow <container ID>
 ```
+* Reiniciar container
+```
+docker restart <container ID>
+```
+* Copiar arquivo para o container
+```
+docker cp <endereco_local> <container ID>:<endereco_container>
+```
+* Copiar arquivo do container para a máquina
+```
+docker cp <container ID>:<endereco_container> <endereco_local>
+```
