@@ -63,3 +63,9 @@ docker cp <endereco_local> <container ID>:<endereco_container>
 ```
 docker cp <container ID>:<endereco_container> <endereco_local>
 ```
+* Executar como root no container
+```
+docker exec -it -u 0 <container ID> bash
+```
+
+
