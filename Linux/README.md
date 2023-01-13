@@ -17,6 +17,13 @@ cat /proc/version
 ```
 dmesg | grep Linux
 ```
+* Versão do Linux
+```
+lsb_release - a
+```
+```
+cat /etc/os-release
+```
 
 ## Informações do sistema
 * Nº de Processadores
