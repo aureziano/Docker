@@ -47,6 +47,11 @@ docker rm <id ou nome do container>
 ```
 docker volume rm $(docker volume ls -q)
 ```
+* Remover todos os volumes sem utilização
+```
+docker system prune --all --force --volumes
+```
+
 * Acompanhar logs
 ```
 docker-compose logs --follow <container ID>
