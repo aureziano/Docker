@@ -57,3 +57,18 @@ For more information read the MYSQL documentation https://dev.mysql.com/doc/refm
 
 
 You can discuss this template or leave feedback on our forum https://www.zabbix.com/forum/zabbix-suggestions-and-feedback/384189-discussion-thread-for-official-zabbix-template-db-mysql
+
+
+
+# Em caso de erro somente no Zabbix-server
+* Precisar subir somente o Zabbix-server
+```
+docker run --name zabbix-server -p 10051:10051 --network="docker_network-zabbix" -e DB_SERVER_HOST="mysql" -e MYSQL_USER="zabbix" -e MYSQL_DATABASE="zabbix" -e MYSQL_PASSWORD="<senha_user_zabbix>" -v '/$(pwd)/zabbix/alertscripts:/usr/lib/zabbix/alertscripts' -d zabbix/zabbix-server-mysql:ubuntu-5.0.1
+```
+Lembrando que os itens:
+- --name zabbix-server : Nome do container a ser usado (caso já estiver no compose usar o mesmo nome das dependencias)
+- -p 10051:10051 : porta 
+- --network="docker_network-zabbix" : nome da rede (Caso estiver já com o compose ativo usar docker networks ls para verificar)
+- -e DB_SERVER_HOST="mysql" -e MYSQL_USER="zabbix" -e MYSQL_DATABASE="zabbix" -e MYSQL_PASSWORD="<senha_user_zabbix>" : parametros do banco
+- -v '/$(pwd)/zabbix/alertscripts:/usr/lib/zabbix/alertscripts' : montagem de volume
+- -d zabbix/zabbix-server-mysql:ubuntu-5.0.1: imagem usada pelo container
