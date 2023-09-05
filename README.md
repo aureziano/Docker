@@ -74,4 +74,9 @@ docker cp <container ID>:<endereco_container> <endereco_local>
 docker exec -it -u 0 <container ID> bash
 ```
 
+* Logs no container
+```
+docker logs -n --tail <nome_container>
+```
+
 
