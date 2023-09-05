@@ -3,3 +3,7 @@
 # Squid_Filebeat_Elastic_Kibana_Logstash
 
 https://www.vivaolinux.com.br/artigo/Container-Elastic-Stack-para-visualizacao-de-logs-do-Proxy-Squid?pagina=3
+
+
+* Integracao Nginx com Elastic Search
+  https://www.elastic.co/pt/blog/how-to-monitor-nginx-web-servers-with-the-elastic-stack 
