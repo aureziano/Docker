@@ -6,9 +6,18 @@ https://www.vivaolinux.com.br/artigo/Container-Elastic-Stack-para-visualizacao-d
 
 
 * Integracao Nginx com Elastic Search
-  https://www.elastic.co/pt/blog/how-to-monitor-nginx-web-servers-with-the-elastic-stack 
+  https://www.elastic.co/pt/blog/how-to-monitor-nginx-web-servers-with-the-elastic-stack
 
-* Filebase
+* No servidor do Elastic
+
+ criar certificado para estar presente em todos os servidores com filebeat
+
+```
+openssl req -config /etc/ssl/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
+```
+Esses certificados deveram estar presentes na pasta /etc/pki/tls/certs/ no servidor onde estará o filebeat.
+
+* Filebeat
   https://habr.com/ru/articles/665072/
 ```
 curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.9.1-linux-x86_64.rpm
@@ -49,7 +58,7 @@ nano /etc/filebeat/filebeat.yml
 ```
 filebeat modules enable system
 ```
-
+* Editar os arquivos /etc/filebeat/modules.d/
 ```
 filebeat -e test output
 ```
