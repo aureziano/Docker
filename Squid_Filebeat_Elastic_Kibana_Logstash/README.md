@@ -21,24 +21,30 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 ```
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
+
 ```
 sudo apt update
 apt-cache policy docker-ce
 sudo apt install docker-ce
 ```
+
 ```
 sudo systemctl status docker
 ```
+
 ```
 docker pull sebp/elk
 ```
+
 ```
 sysctl vm.max_map_count
 sysctl -w vm.max_map_count=262144
 ```
+
 ```
 docker run -d -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk
 ```
+
 ```
 docker logs -n --tail elk
 ```
@@ -49,6 +55,7 @@ mkdir /etc/pki/tls
 mkdir /etc/pki/tls/private
 mkdir /etc/pki/tls/certs
 ```
+
 ```
 openssl req -x509 -batch -nodes -subj "/CN=10.200.7.142/"     -days 3650 -newkey rsa:2048     -keyout private/logstash-beats.key -out certs/logstash-beats.crt
 docker exec -it elk /bin/bash
