@@ -151,7 +151,7 @@ filebeat.config.modules:
 # ------------------------------ Logstash Output -------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["10.200.7.142:5044"]
+  hosts: ["<host_elastic>:5044"]
   #index: filebeat_logs
 
   #certificate_authorities:
