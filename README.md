@@ -8,6 +8,7 @@
 * Airflow
 * NodeJs + Mysql (login) 
 * Zabbix Server + Mysql + Grafana + Zabbix Agent
+* Streama + Mysql + Nginx
 
 
 
