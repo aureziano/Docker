@@ -1,5 +1,4 @@
 ## STREAMA
-
-̍̍̀̀̀̀̀̀̀ ̀ ̀
-teste
-̀̀ ̀ ̀
+̍ ̍ ̍̍ 
+dsadasda
+̍ ̍ ̍ 
