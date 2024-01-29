@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+
+  mysql_8_1:
+    image: mysql:8.1
+    container_name: mysql_8_1
+    restart: always
+    env_file: .env
+    stdin_open: true
+    tty: true
+    ports:
+      - ${DB_MYSQL_PORT}:3306
+    networks:
+      - mysql-network-8_1
+    command:
+      ["--max-allowed-packet=128M","--innodb-log-file-size=64M","--character-set-server=utf8mb4","--collation-server=utf8mb4_unicode_ci"]
+    volumes:
+      - mysql-data-8_1:/var/lib/mysql
+    healthcheck:
+      test:
+        ["CMD","mysqladmin","ping","-u","root","--password=${DB_MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      MYSQL_DATABASE: ${DB_MYSQL_NAME}
+      MYSQL_USER: ${DB_MYSQL_USER}
+      MYSQL_PASSWORD: ${DB_MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_MYSQL_ROOT_PASSWORD}
+
+networks:
+  mysql-network-8_1:
+    name: mysql-network-8_1
+
+volumes:
+  mysql-data-8_1:
