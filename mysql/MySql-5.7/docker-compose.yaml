@@ -24,13 +24,7 @@ services:
       - mysql-data-5_7:/var/lib/mysql
     healthcheck:
       test:
-        [
-          "CMD",
-          "mysqladmin",
-          "ping",
-          "-u",
-          "root",
-          "--password=${DB_MYSQL_PASSWORD}"
+        ["CMD","mysqladmin","ping","-u","root","--password=${DB_MYSQL_ROOT_PASSWORD}"
         ]
       interval: 10s
       timeout: 5s
@@ -39,7 +33,7 @@ services:
       MYSQL_DATABASE: ${DB_MYSQL_NAME}
       MYSQL_USER: ${DB_MYSQL_USER}
       MYSQL_PASSWORD: ${DB_MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_MYSQL_ROOT_PASSWORD}
 
 networks:
   mysql-network-5_7:
