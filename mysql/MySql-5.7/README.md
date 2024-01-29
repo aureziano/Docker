@@ -37,4 +37,3 @@ O serviço MySQL usa um volume chamado `mysql-data-5_7` para armazenar dados per
 
 ---
 
-Certifique-se de ajustar as configurações e descrições conforme necessário para refletir precisamente o seu ambiente e requisitos.
