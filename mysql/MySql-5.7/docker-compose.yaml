@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+
+  mysql_5_7:
+    image: mysql:5.7
+    container_name: mysql_5_7
+    restart: always
+    env_file: .env
+    stdin_open: true
+    tty: true
+    ports:
+      - ${DB_MYSQL_PORT}:3306
+    networks:
+      - mysql-network-5_7
+    command:
+      [
+        "--max-allowed-packet=128M",
+        "--innodb-log-file-size=64M",
+        "--character-set-server=utf8mb4",
+        "--collation-server=utf8mb4_unicode_ci"
+      ]
+    volumes:
+      - mysql-data-5_7:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-u",
+          "root",
+          "--password=${DB_MYSQL_PASSWORD}"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      MYSQL_DATABASE: ${DB_MYSQL_NAME}
+      MYSQL_USER: ${DB_MYSQL_USER}
+      MYSQL_PASSWORD: ${DB_MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_MYSQL_PASSWORD}
+
+networks:
+  mysql-network-5_7:
+    name: mysql-network-5_7
+
+volumes:
+  mysql-data-5_7:
