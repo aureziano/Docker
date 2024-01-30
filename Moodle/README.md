@@ -36,7 +36,7 @@ Comandos Adicionais:
   * `--collation-server=utf8mb4_general_ci`
 Healthcheck: Testa a conexão com o MySQL.
 
-###2.  `moodle` - Moodle com MySql e Apache
+### 2.  `moodle` - Moodle com MySql e Apache
 
 * Imagem: ellakcy/moodle:mysql_maria_apache
 * Porta Exposta: 80
