@@ -1,10 +1,11 @@
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=plastic)
+![Badge em Desenvolvimento](https://img.shields.io/badge/STATUS-EM%20DESENVOLVIMENTO-GREEN?style=plastic)
 [![Docker Hub](https://img.shields.io/docker/v/owncloud/base?logo=docker&label=dockerhub&sort=semver&logoColor=white)](https://hub.docker.com/r/owncloud/base)
 ![Badge Zabbix](https://img.shields.io/static/v1?label=Zabbix&message=5.0&color=blue&style=plastic)
 ![Badge Mysql](https://img.shields.io/static/v1?label=MySql&message=5.7&color=blue&style=plastic)
 ![Badge Grafana](https://img.shields.io/static/v1?label=Grafana&message=9.3&color=blue&style=plastic)
 [![Moodle](https://img.shields.io/badge/Moodle-ellakcy/mysql_maria_apache-green)](https://hub.docker.com/r/ellakcy/moodle)
 [![Portainer](https://img.shields.io/badge/Portainer-CE-blue)](https://hub.docker.com/r/portainer/portainer-ce)
+
 
 # Repositorio com Docker compose das seguintes aplicações
 
