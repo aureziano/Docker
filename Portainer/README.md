@@ -27,3 +27,7 @@ Opções utilizadas:
 
 ## Passo 3: Acesse o Portainer
 Abra um navegador da web e vá para http://localhost:9000. Você será solicitado a criar uma senha de administrador e a escolher o ambiente (local ou remoto).
+
+## Exemplo de senha
+usuario : admin
+senha : admin123456789
