@@ -24,7 +24,9 @@ Edite o arquivo .env com as variáveis necessárias.
 docker-compose up -d
 ```
 ## Serviços e Configurações
-1. moodle_db - MySQL 5.7
+
+### 1. moodle_db - MySQL 5.7
+
 Imagem: MySQL 5.7
 Porta Exposta: `3306`
 Rede: `mysql-network-5_7`
@@ -34,7 +36,8 @@ Comandos Adicionais:
   * `--collation-server=utf8mb4_general_ci`
 Healthcheck: Testa a conexão com o MySQL.
 
-2.  `moodle` - Moodle com MySql e Apache
+###2.  `moodle` - Moodle com MySql e Apache
+
 * Imagem: ellakcy/moodle:mysql_maria_apache
 * Porta Exposta: 80
 * Rede: `mysql-network-5_7`
