@@ -3,8 +3,9 @@
 ![Badge Zabbix](https://img.shields.io/static/v1?label=Zabbix&message=5.0&color=blue&style=plastic)
 ![Badge Mysql](https://img.shields.io/static/v1?label=MySql&message=5.7&color=blue&style=plastic)
 ![Badge Grafana](https://img.shields.io/static/v1?label=Grafana&message=9.3&color=blue&style=plastic)
-[![Moodle](https://img.shields.io/badge/Moodle-NO_IMAGE-green)](https://hub.docker.com/r/ellakcy/moodle)
-[![Portainer](https://img.shields.io/badge/Portainer-CE-blue)](https://hub.docker.com/r/portainer/portainer-ce)
+[![Moodle](https://img.shields.io/badge/Moodle-ellakcy/mysql_maria_apache-green?logo=moodle&style=plastic)](https://hub.docker.com/r/ellakcy/moodle)
+[![Portainer](https://img.shields.io/badge/Portainer-CE-blue?logo=portainer&style=plastic)](https://hub.docker.com/r/portainer/portainer-ce)
+
 
 
 
