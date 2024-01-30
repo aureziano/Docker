@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  php73:
+    image: php:7.3-apache
+    ports:
+      - 80:80
+    networks:
+      - mysql-network-5_7
+    volumes:
+        - ./:/var/www/html/
+    extra_hosts:
+      - "mysql_5_7:127.0.0.1"
+    command: >
+      bash -c "
+        apt-get update && 
+        apt-get install -y zlib1g-dev libzip-dev default-mysql-client &&  # Alteração para default-mysql-client
+        docker-php-ext-install zip pdo_mysql &&
+        apache2-foreground
+      "  
+
+networks:
+  mysql-network-5_7:
+    external: true
