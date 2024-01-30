@@ -58,12 +58,13 @@ Esta configuração do Docker Compose estabelece um servidor MySQL 8.1 com confi
 - **Usuário**: `${DB_MYSQL_USER}`
 - **Senha**: `${DB_MYSQL_PASSWORD}`
 
-## Verificação de Saúde
+## Health Check
 
-Para verificar a saúde do contêiner MySQL, você pode usar o seguinte comando:
+Para verificar o funcionamento do contêiner MySQL, você pode usar o seguinte comando:
 
 ```bash
 docker-compose ps
+```
 
 
 License
