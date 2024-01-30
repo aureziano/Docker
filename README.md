@@ -3,16 +3,17 @@
 ![Badge Zabbix](https://img.shields.io/static/v1?label=Zabbix&message=5.0&color=blue&style=plastic)
 ![Badge Mysql](https://img.shields.io/static/v1?label=MySql&message=5.7&color=blue&style=plastic)
 ![Badge Grafana](https://img.shields.io/static/v1?label=Grafana&message=9.3&color=blue&style=plastic)
+[![Moodle](https://img.shields.io/badge/Moodle-ellakcy/mysql_maria_apache-green)](https://hub.docker.com/r/ellakcy/moodle)
+[![Portainer](https://img.shields.io/badge/Portainer-CE-blue)](https://hub.docker.com/r/portainer/portainer-ce)
 # Repositorio com Docker compose das seguintes aplicações
 
 * Airflow
 * NodeJs + Mysql (login) 
 * Zabbix Server + Mysql + Grafana + Zabbix Agent
 * Streama + Mysql + Nginx
-
-
-
-
+* Portainer
+* Moodle
+* MySql (5.7 e 8.1)
 
 
 # Comandos úteis
@@ -53,7 +54,10 @@ docker volume rm $(docker volume ls -q)
 ```
 docker system prune --all --force --volumes
 ```
-
+* Para os containers e remove seus volumes e rede
+```
+docker-compose down -v
+```
 * Acompanhar logs
 ```
 docker-compose logs --follow <container ID>
