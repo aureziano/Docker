@@ -17,8 +17,8 @@ Esta configuração do Docker Compose estabelece um servidor MySQL 8.1 com confi
 1. Clone este repositório:
 
     ```bash
-    git clone https://github.com/seunome/seurepositorio.git
-    cd seurepositorio
+    git clone https://github.com/aureziano/Docker.git
+    cd ./Docker/mysql/Mysql-8.1/
     ```
 
 2. Crie um arquivo `.env` com a configuração do MySQL. Exemplo:
