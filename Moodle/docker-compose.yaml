@@ -1,0 +1,69 @@
+version: '2'
+
+services:
+  moodle_db:
+    image: mysql:5.7
+    container_name: moodle_db
+    restart: always
+    env_file: .env
+    stdin_open: true
+    tty: true
+    ports:
+      - ${DB_MYSQL_PORT}:3306
+    networks:
+      - mysql-network-5_7
+    command:
+      [
+        "--character-set-server=utf8mb4",
+        "--collation-server=utf8mb4_general_ci"
+      ]
+    volumes:
+      - moodledb_mysql:/var/lib/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d
+      # - ./my.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf # config mysql server
+    healthcheck:
+      test:
+        ["CMD","mysqladmin","ping","-u","root","--password=${DB_MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      MYSQL_DATABASE: ${DB_MYSQL_NAME}
+      MYSQL_USER: ${DB_MYSQL_USER}
+      MYSQL_PASSWORD: ${DB_MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_MYSQL_ROOT_PASSWORD}
+
+
+  moodle:
+    image: ellakcy/moodle:mysql_maria_apache
+    container_name: moodle
+    env_file: .env
+    volumes:
+      - './data/moodle:/var/moodledata'
+      - 'www_mysql_apache:/var/www/html'
+    ports:
+      - '8082:80'
+    networks:
+      - mysql-network-5_7 
+    environment:
+      MOODLE_URL: $MOODLE_URL
+      MOODLE_ADMIN: $MOODLE_ADMIN
+      MOODLE_ADMIN_PASSWORD: $MOODLE_ADMIN_PASSWORD
+      MOODLE_ADMIN_EMAIL: $MOODLE_ADMIN_EMAIL
+      MOODLE_DB_TYPE: "mysql"
+      MOODLE_DB_HOST: "moodle_db"
+      MOODLE_DB_USER: ${MOODLE_DB_USER}
+      MOODLE_DB_PASSWORD: ${MOODLE_DB_PASSWORD}
+      MOODLE_DB_NAME: ${MOODLE_DB_NAME}
+      MOODLE_REVERSE_LB: $MOODLE_REVERSE_LB
+      MOODLE_SSL: $MOODLE_SSL
+      MOODLE_EMAIL_TYPE_QMAIL: $MOODLE_EMAIL_TYPE_QMAIL
+      MOODLE_EMAIL_HOST: $MOODLE_EMAIL_HOST
+
+
+networks:
+  mysql-network-5_7:
+    external: true
+volumes:
+  moodledb_mysql:
+  www_mysql_apache:
