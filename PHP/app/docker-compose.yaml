@@ -1,24 +1,25 @@
-version: '3'
+version: '3.7'
 
 services:
   php73:
     image: php:7.3-apache
     ports:
       - 80:80
+    volumes:
+      - ./:/var/www/html/
     networks:
       - mysql-network-5_7
-    volumes:
-        - ./:/var/www/html/
-    extra_hosts:
-      - "mysql_5_7:127.0.0.1"
     command: >
       bash -c "
         apt-get update && 
-        apt-get install -y zlib1g-dev libzip-dev default-mysql-client &&  # Alteração para default-mysql-client
+        apt-get install -y zlib1g-dev libzip-dev default-mysql-client &&
         docker-php-ext-install zip pdo_mysql &&
         apache2-foreground
       "  
+    environment:
+      MYSQL_HOST: mysql_5_7  # Use o nome do serviço MySQL no Docker Compose
+      MYSQL_PORT: 3306
 
 networks:
   mysql-network-5_7:
-    external: true
+    external: true  # Certifique-se de que a rede já existe no Docker
