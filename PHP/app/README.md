@@ -15,8 +15,8 @@ Este repositório contém um arquivo `docker-compose.yml` para configurar um amb
 
 ### Passo 1: Clone o Repositório
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repo.git
-cd nome-do-repo
+git clone https://github.com/aureziano/Docker.git
+cd ./PHP/app/
 ```
 ## Passo 2: Execute o Docker Compose
 bash
