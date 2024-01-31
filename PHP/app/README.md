@@ -35,12 +35,18 @@ O PHP está configurado para se conectar ao MySQL usando o nome do serviço `mys
 
 *Observação*: Certifique-se de que o arquivo `index.php` está no diretório raiz do seu projeto.
 
+## Criação do banco de dados e usuario para o php
 
+### Criação de usuario com privilegios e o database
+```
+CREATE DATABASE IF NOT EXISTS app_php;
+CREATE USER 'phpuser'@'%' IDENTIFIED BY '123456';
+GRANT all privileges ON app_php.* TO 'phpuser'@'%' WITH GRANT OPTION;
+flush privileges;
+```
+### Criação das tabelas
 
+Executar os comandos MySql do arquivo `db_my.sql`.
 
-
-
-
-
-https://github.com/ribafs/aplicativos-php
+Adaptação do projeto de https://github.com/ribafs/aplicativos-php
 
