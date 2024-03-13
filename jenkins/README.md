@@ -16,11 +16,11 @@ docker logs jenkins | less
 # Configuração
 Este contêiner Docker do Jenkins utiliza os seguintes volumes:
 
-* ~/jenkins:/var/jenkins_home: Volume para persistência de dados do Jenkins.
+* `~/jenkins:/var/jenkins_home`: Volume para persistência de dados do Jenkins.
 
-* /var/run/docker.sock:/var/run/docker.sock: Volume para permitir que o Jenkins acesse o daemon Docker.
+* `/var/run/docker.sock:/var/run/docker.sock`: Volume para permitir que o Jenkins acesse o daemon Docker.
 
-* /usr/local/bin/docker:/usr/local/bin/docker: Volume para permitir que o Jenkins execute comandos Docker.
+* `/usr/local/bin/docker:/usr/local/bin/docker`: Volume para permitir que o Jenkins execute comandos Docker.
 
 
 
