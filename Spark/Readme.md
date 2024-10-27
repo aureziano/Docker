@@ -29,3 +29,15 @@ pip install pyspark
 ├── spark-apps # Diretório para armazenar aplicativos Spark 
 
 ├── spark-data # Diretório para armazenar dados
+
+
+
+## Descrição dos Arquivos e Diretórios
+
+- **docker-compose.yaml**: Arquivo de configuração que define os serviços, redes e volumes para o ambiente Docker.
+- **Dockerfile**: Define uma imagem Docker personalizada que inclui o Jupyter e o PySpark.
+- **start-spark.sh**: Script utilizado para iniciar o Spark. (Você pode adicionar mais detalhes sobre o que o script faz).
+- **jars/**: Diretório onde são armazenados os arquivos JAR necessários para a execução do Spark e do Delta Lake.
+- **spark-apps/**: Diretório destinado a armazenar os aplicativos desenvolvidos para o Spark.
+- **spark-data/**: Diretório para armazenar os dados que serão processados pelos aplicativos Spark.
+
