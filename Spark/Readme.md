@@ -12,3 +12,12 @@ pip install pyspark
 ```
 
 - O servidor Spark pode ser acessado pela porta 9090 e seu work 9091 nesse caso
+
+* A estrutura de pastas fica assim:
+-- spark-apps
+-- spark-data
+-- jars
+-----delta-core_2.12-1.2.1.jar
+-- docker-compose.yaml
+-- Dokcerfile
+-- start-spark.sh
