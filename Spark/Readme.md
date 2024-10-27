@@ -14,18 +14,18 @@ pip install pyspark
 - O servidor Spark pode ser acessado pela porta 9090 e seu work 9091 nesse caso
 
 * A estrutura de pastas fica assim:
-* 
--- spark-apps
-  
--- spark-data
 
--- jars
+ 
+├── docker-compose.yaml # Arquivo de configuração do Docker Compose 
 
------delta-core_2.12-1.2.1.jar
+├── Dockerfile # Dockerfile para criar uma imagem personalizada do Jupyter com PySpark 
 
--- docker-compose.yaml
+├── start-spark.sh # Script para iniciar o Spark
 
--- Dokcerfile
+├── jars # Diretório que contém bibliotecas adicionais
 
--- start-spark.sh
+│ └── delta-core_2.12-1.2.1.jar # JAR do Delta Lake 
 
+├── spark-apps # Diretório para armazenar aplicativos Spark 
+
+├── spark-data # Diretório para armazenar dados
