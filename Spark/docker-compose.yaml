@@ -1,0 +1,53 @@
+services:
+  spark-master:
+    image: docker.io/bitnami/spark:3.3
+    ports:
+      - "9090:8080"  # Port for Spark UI
+      - "7077:7077"  # Port for Spark master
+    volumes:
+      - ./apps:/opt/docker/spark/spark-apps
+      - ./data:/opt/docker/spark/spark-data
+      - ./jars:/opt/docker/spark/jars  # Mapeia o diretório com o JAR do Delta Lake
+    environment:
+      - SPARK_LOCAL_IP=spark-master
+      - SPARK_WORKLOAD=master
+      - SPARK_CONF_DIR=/opt/docker/spark/conf
+      - SPARK_EXTRA_JAVA_OPTS=-Ddelta.logStore.class=org.apache.spark.sql.delta.storage.S3SingleDriverLogStore  # Para usar S3, ajuste se necessário
+      - SPARK_SUBMIT_EXTRA_CLASSPATH=/opt/docker/spark/jars/delta-core_2.12-1.2.1.jar  # Ajuste o caminho e a versão conforme necessário
+
+  spark-worker-a:
+    image: docker.io/bitnami/spark:3.3
+    ports:
+      - "9091:8080"  # Port for Spark worker UI
+      - "7000:7000"  # Port for Spark worker communication
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_DRIVER_MEMORY=1G
+      - SPARK_EXECUTOR_MEMORY=1G
+      - SPARK_WORKLOAD=worker
+      - SPARK_LOCAL_IP=spark-worker-a
+      - SPARK_CONF_DIR=/opt/docker/spark/conf
+      - SPARK_EXTRA_JAVA_OPTS=-Ddelta.logStore.class=org.apache.spark.sql.delta.storage.S3SingleDriverLogStore  # Para usar S3, ajuste se necessário
+      - SPARK_SUBMIT_EXTRA_CLASSPATH=/opt/spark/jars/delta-core_2.12-1.2.1.jar  # Ajuste o caminho e a versão conforme necessário
+    volumes:
+      - ./apps:/opt/docker/spark/spark-apps
+      - ./data:/opt/docker/spark/spark-data
+      - ./jars:/opt/docker/spark/jars  # Mapeia o diretório com o JAR do Delta Lake
+
+  jupyter:
+    image: jupyter/pyspark-notebook
+    container_name: jupyter
+    ports:
+      - "8888:8888"  # Port for accessing Jupyter
+    volumes:
+      - ./data:/opt/docker/spark/data  # Mapeia um diretório local para armazenar dados
+      - ./jars:/opt/docker/spark/jars  # Mapeia o diretório com o JAR do Delta Lake
+    environment:
+      - SPARK_HOME=/opt/spark
+      - PYSPARK_PYTHON=python3
+    depends_on:
+      - spark-master
