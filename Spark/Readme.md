@@ -55,13 +55,11 @@ spark-data/: Usado para armazenar os dados que serão processados pelos aplicati
 Como Executar o Projeto
 Construir a Imagem:
 
-```
-bash
+```bash
 docker-compose build
 ```
 Iniciar os Contêineres:
-```
-bash
+```bash
 docker-compose up -d
 ```
 Acessar Jupyter e Spark:
