@@ -5,14 +5,15 @@
 
 Este projeto utiliza **Apache Spark** em conjunto com **Delta Lake** e **Jupyter Notebook** para manipulação e análise de dados em um ambiente Docker.
 
+Link de apoio :
+https://karlchris.github.io/data-engineering/projects/spark-docker/
+
 ## Acesso ao Jupyter Notebook
 
 - O Jupyter Notebook é aberto na porta **8888**. Para acessá-lo, você deve verificar o token exibido no console do servidor:
   
 http://<ip_do_host>:8888/?token=c8de56fa...
 
-markdown
-Copiar código
 
 - Após abrir o Jupyter Notebook, instale o **PySpark** executando o seguinte comando:
 
@@ -28,11 +29,20 @@ A estrutura de diretórios do projeto é a seguinte:
 .
 ├── docker-compose.yaml          # Arquivo de configuração do Docker Compose
 ├── Dockerfile                   # Dockerfile para criar uma imagem personalizada do Jupyter com PySpark
-├── start-spark.sh              # Script para iniciar o Spark
+├── entrypoint.sh                # Script de entrypoint
+├── requirements.txt             # Requisitos
+├── Makefile
+├── spark-3.5.3-bin-hadoop3.tgz # spark
+├── pyspark-3.5.3.tar.gz
+├── delta-0.4.2.tar.gz
 ├── jars                         # Diretório que contém bibliotecas adicionais
-│   └── delta-core_2.12-1.2.1.jar  # JAR do Delta Lake
-├── spark-apps                   # Diretório para armazenar aplicativos Spark
-└── spark-data                   # Diretório para armazenar dados
+│   └── delta-core_2.12-2.4.0.jar  # JAR do Delta Lake
+│   └── delta-spark_2.12-3.2.0     # JAR do Delta Lake
+│   └── delta-storage-3.2.0        # JAR do Delta Lake
+│   └── hudi-spark3-bundle_2.12-0.15.0  #JAR hudi
+│   └── iceberg-spark-runtime-3.4_2.12-1.4.3 # JAR iceberg spark runtime
+├── scripts                # Diretório para armazenar scripts
+└── data                   # Diretório para armazenar dados
 ```
 
 Descrição dos Arquivos e Diretórios
