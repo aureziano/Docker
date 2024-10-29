@@ -8,22 +8,24 @@ Este projeto utiliza **Apache Spark** em conjunto com **Delta Lake** e **Jupyter
 Link de apoio :
 [https://karlchris.github.io/data-engineering/projects/spark-docker/](https://github.com/leonardoleanodev/pyspark_example/blob/main/README.md)
 
-## Acesso ao Jupyter Notebook
 
-- O Jupyter Notebook é aberto na porta **8888**. Para acessá-lo, você deve verificar o token exibido no console do servidor:
-  
-http://<ip_do_host>:8888/?token=c8de56fa...
+## Acesso ao Servidor Spark
+### Criar as pastas devidas na raiz do projeto:
 
-
-- Após abrir o Jupyter Notebook, instale o **PySpark** executando o seguinte comando:
-
+- Criando a pasta app:
 ```bash
-pip install pyspark
+mkdir app/
 ```
-Acesso ao Servidor Spark
-O servidor Spark Master pode ser acessado na porta 9090.
-O Spark Worker pode ser acessado na porta 9091.
-Estrutura de Diretórios
+
+- Dando permissão a pasta app:
+```bash
+chmod -R 777 app/
+```
+
+Fazer os mesmos comandos caso preciso nas pastas criadas.
+
+
+### Estrutura de Diretórios
 A estrutura de diretórios do projeto é a seguinte:
 ```
 .
@@ -39,7 +41,7 @@ A estrutura de diretórios do projeto é a seguinte:
 └── app         
 ```
 
-Descrição dos Arquivos e Diretórios
+## Descrição dos Arquivos e Diretórios
 docker-compose.yaml: Define os serviços, redes e volumes para o ambiente Docker.
 Dockerfile: Especifica a construção de uma imagem Docker personalizada que inclui Jupyter e PySpark.
 app: Destinado a armazenar os aplicativos desenvolvidos para o Spark.
@@ -59,4 +61,11 @@ Acessar Jupyter e Spark:
 * Spark Master: http://<ip_do_host>:9090
 * Spark Worker: http://<ip_do_host>:9091
 * Spark History: http://<ip_do_host>:18080
+
+
+## Acesso ao Jupyter Notebook
+
+- O Jupyter Notebook é aberto na porta **8888**. Para acessá-lo, você deve verificar o token exibido no console do servidor:
+  
+http://<ip_do_host>:8888/?token=c8de56fa...
 
