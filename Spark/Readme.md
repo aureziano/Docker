@@ -6,7 +6,7 @@
 Este projeto utiliza **Apache Spark** em conjunto com **Delta Lake** e **Jupyter Notebook** para manipulação e análise de dados em um ambiente Docker.
 
 Link de apoio :
-https://karlchris.github.io/data-engineering/projects/spark-docker/
+[https://karlchris.github.io/data-engineering/projects/spark-docker/](https://github.com/leonardoleanodev/pyspark_example/blob/main/README.md)
 
 ## Acesso ao Jupyter Notebook
 
@@ -29,29 +29,20 @@ A estrutura de diretórios do projeto é a seguinte:
 .
 ├── docker-compose.yaml          # Arquivo de configuração do Docker Compose
 ├── Dockerfile                   # Dockerfile para criar uma imagem personalizada do Jupyter com PySpark
-├── entrypoint.sh                # Script de entrypoint
 ├── requirements.txt             # Requisitos
 ├── Makefile
-├── spark-3.5.3-bin-hadoop3.tgz # spark
-├── pyspark-3.5.3.tar.gz
-├── delta-0.4.2.tar.gz
-├── jars                         # Diretório que contém bibliotecas adicionais
-│   └── delta-core_2.12-2.4.0.jar  # JAR do Delta Lake
-│   └── delta-spark_2.12-3.2.0     # JAR do Delta Lake
-│   └── delta-storage-3.2.0        # JAR do Delta Lake
-│   └── hudi-spark3-bundle_2.12-0.15.0  #JAR hudi
-│   └── iceberg-spark-runtime-3.4_2.12-1.4.3 # JAR iceberg spark runtime
-├── scripts                # Diretório para armazenar scripts
-└── data                   # Diretório para armazenar dados
+├── conf                    
+│   └── spark-defaults.conf  
+├── tmp
+└── spark-events
+  └── spark-events
+└── app         
 ```
 
 Descrição dos Arquivos e Diretórios
 docker-compose.yaml: Define os serviços, redes e volumes para o ambiente Docker.
 Dockerfile: Especifica a construção de uma imagem Docker personalizada que inclui Jupyter e PySpark.
-start-spark.sh: Script utilizado para iniciar o Spark.
-jars/: Diretório para armazenar os arquivos JAR necessários para a execução do Spark e do Delta Lake.
-spark-apps/: Destinado a armazenar os aplicativos desenvolvidos para o Spark.
-spark-data/: Usado para armazenar os dados que serão processados pelos aplicativos Spark.
+app: Destinado a armazenar os aplicativos desenvolvidos para o Spark.
 Como Executar o Projeto
 Construir a Imagem:
 
@@ -67,4 +58,5 @@ Acessar Jupyter e Spark:
 Jupyter Notebook: http://<ip_do_host>:8888
 Spark Master: http://<ip_do_host>:9090
 Spark Worker: http://<ip_do_host>:9091
+Spark History: http://<ip_do_host>:18080
 
