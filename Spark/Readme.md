@@ -55,8 +55,8 @@ docker-compose up -d
 ```
 Acessar Jupyter e Spark:
 
-Jupyter Notebook: http://<ip_do_host>:8888
-Spark Master: http://<ip_do_host>:9090
-Spark Worker: http://<ip_do_host>:9091
-Spark History: http://<ip_do_host>:18080
+* Jupyter Notebook: http://<ip_do_host>:8888
+* Spark Master: http://<ip_do_host>:9090
+* Spark Worker: http://<ip_do_host>:9091
+* Spark History: http://<ip_do_host>:18080
 
