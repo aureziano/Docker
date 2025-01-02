@@ -1,4 +1,4 @@
-![Versão](https://anaconda.org/anaconda/minio/badges/version.svg)
+![MinIO](https://img.shields.io/badge/MinIO-Cloud%20Storage-%230075be?logo=minio&logoColor=white)
 
 # Minio (nó único)
 MINIO_ROOT_USERe MINIO_ROOT_PASSWORDsão duas variáveis ​​de ambiente importantes no arquivo docker-compose. 
