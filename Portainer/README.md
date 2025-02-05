@@ -10,7 +10,6 @@
 
 ### Passo 1: Clone o repositório
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repo.git
 cd nome-do-repo
 ```
 ## Passo 2: Execute o contêiner do Portainer
